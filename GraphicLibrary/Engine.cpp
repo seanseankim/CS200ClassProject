@@ -4,6 +4,8 @@
 #include "ObjectManager.hpp"
 #include "Graphic.hpp"
 #include "../CS200_Jeesoo/Start.hpp"
+#include "../CS200_Jeesoo/demo1.hpp"
+#include "../CS200_Jeesoo/demo2.hpp"
 
 
 namespace
@@ -25,9 +27,9 @@ void Engine::Init()
 	m_graphic = Graphic::GetGraphic();
 	m_graphic->Init();
 	m_stateManager->AddState("Start", new Start);
-	//m_stateManager->AddState("Demo1", new Demo1());
+	m_stateManager->AddState("Demo1", new Demo1);
+	m_stateManager->AddState("Demo2", new Demo2);
 
-	//StateManager::GetStateManager()->Get_States().at("Start").get()->Load();
 }
 
 void Engine::Update()
@@ -39,20 +41,12 @@ void Engine::Update()
 	m_graphic->Update(m_dt);
 	m_objectManager->Update(m_dt);
 
-	StateManager::GetStateManager()->Get_States().at("Start").get()->Update(m_dt);
-
 	Reset();
 
 	if (input.Is_Key_Triggered(GLFW_KEY_1))
 	{
 		m_stateManager->is_pause = !m_stateManager->is_pause;
 		std::cout << "PAUSED!\n";
-	}
-		
-	if (input.Is_Key_Triggered(GLFW_KEY_N))
-	{
-		Clear();
-		StateManager::GetStateManager()->Get_States().at("Start").get()->Load();
 	}
 }
 

@@ -20,32 +20,32 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{86B28214-91B5-4D5C-A6E4-B2D724C153A4}</ProjectGuid>
-    <RootNamespace>GraphicLibrary</RootNamespace>
+    <ProjectGuid>{1518A3A6-432F-4246-B71E-D98314FE6704}</ProjectGuid>
+    <RootNamespace>UnitTest</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -69,28 +69,37 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
-      <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)MathLib;$(SolutionDir)external\glew\include;$(SolutionDir)external\glfw\include;$(SolutionDir)external\stb\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
-    </ClCompile>
-    <Link>
-      <SubSystem>Console</SubSystem>
-    </Link>
-  </ItemDefinitionGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)MathLib;$(SolutionDir)external\glew\include;$(SolutionDir)external\glfw\include;$(SolutionDir)external\stb\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)MathLib</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)MathLib</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -104,8 +113,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)MathLib;$(SolutionDir)external\glew\include;$(SolutionDir)external\glfw\include;$(SolutionDir)external\stb\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)MathLib</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -121,8 +129,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)MathLib;$(SolutionDir)external\glew\include;$(SolutionDir)external\glfw\include;$(SolutionDir)external\stb\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)MathLib</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -131,72 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="angles.hpp" />
-    <ClInclude Include="Application.hpp" />
-    <ClInclude Include="Bitmapfont.hpp" />
-    <ClInclude Include="Camera.hpp" />
-    <ClInclude Include="CameraView.hpp" />
-    <ClInclude Include="Color4f.hpp" />
-    <ClInclude Include="Color4ub.hpp" />
-    <ClInclude Include="Component.hpp" />
-    <ClInclude Include="Component_Collision.hpp" />
-    <ClInclude Include="Component_Movement.hpp" />
-    <ClInclude Include="Component_RandomMovement.hpp" />
-    <ClInclude Include="Component_StraightMovement.hpp" />
-    <ClInclude Include="Component_Text.hpp" />
-    <ClInclude Include="Engine.hpp" />
-    <ClInclude Include="GL.hpp" />
-    <ClInclude Include="Graphic.hpp" />
-    <ClInclude Include="Image.hpp" />
-    <ClInclude Include="Input.hpp" />
-    <ClInclude Include="Material.hpp" />
-    <ClInclude Include="Mesh.hpp" />
-    <ClInclude Include="Object.hpp" />
-    <ClInclude Include="ObjectManager.hpp" />
-    <ClInclude Include="ObjectShape.hpp" />
-    <ClInclude Include="Screenshot.hpp" />
-    <ClInclude Include="Shader.hpp" />
-    <ClInclude Include="Component_Sprite.hpp" />
-    <ClInclude Include="State.hpp" />
-    <ClInclude Include="StateManager.hpp" />
-    <ClInclude Include="StockShaders.hpp" />
-    <ClInclude Include="Text.hpp" />
-    <ClInclude Include="Texture.hpp" />
-    <ClInclude Include="TimeClock.hpp" />
-    <ClInclude Include="Transform.hpp" />
-    <ClInclude Include="VertexLayoutDescription.hpp" />
-    <ClInclude Include="Vertices.hpp" />
-    <ClInclude Include="View.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Application.cpp" />
-    <ClCompile Include="Bitmapfont.cpp" />
-    <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="CameraView.cpp" />
-    <ClCompile Include="Color.cpp" />
-    <ClCompile Include="Component_Collision.cpp" />
-    <ClCompile Include="Component_Movement.cpp" />
-    <ClCompile Include="Component_RandomMovement.cpp" />
-    <ClCompile Include="Component_StraightMovement.cpp" />
-    <ClCompile Include="Component_Text.cpp" />
-    <ClCompile Include="Engine.cpp" />
-    <ClCompile Include="GL.cpp" />
-    <ClCompile Include="Graphic.cpp" />
-    <ClCompile Include="Image.cpp" />
-    <ClCompile Include="Input.cpp" />
-    <ClCompile Include="Mesh.cpp" />
-    <ClCompile Include="Object.cpp" />
-    <ClCompile Include="ObjectManager.cpp" />
-    <ClCompile Include="Screenshot.cpp" />
-    <ClCompile Include="Shader.cpp" />
-    <ClCompile Include="Component_Sprite.cpp" />
-    <ClCompile Include="StateManager.cpp" />
-    <ClCompile Include="Text.cpp" />
-    <ClCompile Include="Texture.cpp" />
-    <ClCompile Include="Transform.cpp" />
-    <ClCompile Include="VertexLayoutDescription.cpp" />
-    <ClCompile Include="Vertices.cpp" />
-    <ClCompile Include="View.cpp" />
+    <ClCompile Include="unittest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MathLib\MathLib.vcxproj">
@@ -204,7 +146,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="StockShaders.inl" />
+    <ClInclude Include="catch.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

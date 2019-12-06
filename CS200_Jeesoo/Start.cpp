@@ -4,7 +4,6 @@
 #include "Component_Collision.hpp"
 #include "Component_Sprite.hpp"
 #include "Component_Movement.hpp"
-#include "Component_Text.hpp"
 #include "GL.hpp"
 #include "Color.cpp"
 #include "ObjectShape.hpp"
@@ -13,6 +12,9 @@
 #define SKY {0.517647088, 0.611764729, 0.760784328, 1}
 #define BUTTON {224, 179, 110}
 #define MOUNTAIN {20, 130, 36}
+
+
+Start* Start::start = nullptr;
 
 namespace
 {
@@ -27,56 +29,69 @@ void Start::Load()
 
 	GL::set_clear_color(SKY);
 
-	demo2Button = new Object();
-	demo2Button->AddComponent(new Sprite(demo2Button, ObjectShape::TRIANGLE, { -800, -130 }, { 600,400 }, MOUNTAIN));
-	demo2Button->Set_Tag("arena");
-	ObjectManager::GetObjectManager()->AddObject(demo2Button);
+	mountain = new Object();
+	mountain->AddComponent(new Sprite(mountain, ObjectShape::TRIANGLE, { -800, -130 }, { 600,400 }, MOUNTAIN));
+	mountain->Set_Tag("arena");
+	ObjectManager::GetObjectManager()->AddObject(mountain);
 
 	player = new Object();
-	player->AddComponent(new Sprite(player, ObjectShape::SQUARE, "../sprite/mario.png", { -500,-150 }, { 130,100 }, BUTTON));
+	player->AddComponent(new Sprite(player, ObjectShape::SQUARE, "../sprite/mario.png", { -400,-150 }, { 130,100 }, BUTTON));
 	player->AddComponent(new Movement);
 	player->AddComponent(new Collision);
 	player->Set_Tag("arena");
 	ObjectManager::GetObjectManager()->AddObject(player);
 
-
-	demo1Button = new Object();
-	demo1Button->AddComponent(new Sprite(demo1Button, ObjectShape::RECT, "../sprite/pipe.png", { 0,-130 }, { 160,200 }, BUTTON));
-	demo1Button->AddComponent(new Collision);
-	demo1Button->Set_Tag("arena");
-	ObjectManager::GetObjectManager()->AddObject(demo1Button);
+	pipe = new Object();
+	pipe->AddComponent(new Sprite(pipe, ObjectShape::RECT, "../sprite/pipe.png", { 0,-130 }, { 160,200 }, BUTTON));
+	pipe->AddComponent(new Collision);
+	pipe->Set_Tag("pipe1");
+	ObjectManager::GetObjectManager()->AddObject(pipe);
 	
+	ground = new Object();
+	ground->AddComponent(new Sprite(ground, ObjectShape::RECT, "../sprite/brickpattern.png", { 0,-400 }, { 2000,350 }, BUTTON));
+	ground->Set_Tag("arena");
+	ObjectManager::GetObjectManager()->AddObject(ground);
 
-	demo3Button = new Object();
-	demo3Button->AddComponent(new Sprite(demo3Button, ObjectShape::RECT, "../sprite/brickpattern.png", { 0,-400 }, { 2000,350 }, BUTTON));
-	demo3Button->Set_Tag("arena");
-	ObjectManager::GetObjectManager()->AddObject(demo3Button);
+	sun = new Object();
+	sun->AddComponent(new Sprite(sun, ObjectShape::ELLIPSE, { -500,400 }, { 100,300 }, BUTTON));
+	sun->Set_Tag("arena");
+	ObjectManager::GetObjectManager()->AddObject(sun);
 
-	demo4Button = new Object();
-	demo4Button->AddComponent(new Sprite(demo4Button, ObjectShape::RECT, "../sprite/pipe.png", { 800,-130 }, { 160,200 }, BUTTON));
-	demo4Button->AddComponent(new Collision);
-	demo4Button->Set_Tag("arena");
-	ObjectManager::GetObjectManager()->AddObject(demo4Button);
+	if (!font.LoadFromFile(L"../assets/malgungothic.fnt"))
+	{
+		std::cout << "Failed to Load Font!" << std::endl;
+	}
+	
+	Object* text = new Object();
+	text->SetTranslation({ 0,300 });
+	text->AddComponent(new TextComp(text, L"Welcome to my graphic project", { 1,0,0,1 }, {100, 100} , font));
+	text->Set_Tag("text");
+	ObjectManager::GetObjectManager()->AddObject(text);
 
-	demo5Button = new Object();
-	demo5Button->AddComponent(new Sprite(demo5Button, ObjectShape::RECT, "../sprite/pipe.png", { 400,-130 }, { 160,200 }, BUTTON));
-	demo5Button->AddComponent(new Collision);
-	demo5Button->Set_Tag("arena");
-	ObjectManager::GetObjectManager()->AddObject(demo5Button);
+	Object* text_2 = new Object();
+	text_2->SetTranslation({ 30,50 });
+	text_2->AddComponent(new TextComp(text_2, L" This way!", { 1,0,0,1 }, { 100, 100 }, font));
+	text_2->Set_Tag("text");
+	ObjectManager::GetObjectManager()->AddObject(text_2);
 
-	demo6Button = new Object();
-	demo6Button->AddComponent(new Sprite(demo6Button, ObjectShape::ELLIPSE, { -500,400 }, { 100,300 }, BUTTON));
-	demo6Button->Set_Tag("arena");
-	ObjectManager::GetObjectManager()->AddObject(demo6Button);
-
-	/*Object* text1 = new Object();
-	text1->AddComponent(new Sprite(text1, ObjectShape::RECT, { 0,130 }, { 130,50 }, { 255,0,0,255 }));
-	text1->AddComponent(new TextComp(text1, L"Demo 1", { 0,0,0,1 }, { 30,30 }));
-	text1->Set_Tag("text");
-	ObjectManager::GetObjectManager()->AddObject(text1);*/
+	Object* text_3 = new Object();
+	text_3->SetTranslation({ -300,300 });
+	text_3->AddComponent(new TextComp(text_3, L" 1", { 1,0,0,1 }, { 100, 100 }, font));
+	text_3->Set_Tag("text");
+	ObjectManager::GetObjectManager()->AddObject(text_3);
 }
 
 void Start::Update(float dt)
 {
-	//cout << "At the menu!\n";
+
+}
+
+void Start::Clear()
+{
+	unsigned int number_of_objects = level1_obj_manager->GetObjectManagerContainer().size();
+	for (unsigned int i = 0; i < number_of_objects; ++i)
+	{
+		Object* to_be_deleted = level1_obj_manager->GetObjectManagerContainer()[i].get();
+		to_be_deleted->SetDeadCondition(true);
+	}
 }

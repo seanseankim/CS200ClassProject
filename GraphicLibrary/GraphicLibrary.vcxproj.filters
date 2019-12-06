@@ -93,6 +93,12 @@
     <ClCompile Include="Screenshot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Component_RandomMovement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Component_StraightMovement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.hpp">
@@ -195,6 +201,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Screenshot.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Component_RandomMovement.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Component_StraightMovement.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

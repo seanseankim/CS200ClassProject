@@ -15,31 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Start.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="demo1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="demo2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="catch.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="main.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Start.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="demo1.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="demo2.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClCompile Include="unittest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

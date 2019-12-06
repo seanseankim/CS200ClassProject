@@ -12,47 +12,55 @@ void View::Init()
 
 void View::Update(float dt)
 {
-
+	//zoom in or out
 	if (input.Mouse_Wheel_Scroll() < 0)
 	{
 		cameraView.AddZoom(-0.05f);
 		input.Set_Mouse_Wheel(0.0, 0.0);
-		//Graphic::GetGraphic()->get_need_update_sprite() = true;
 	}
 	else if (input.Mouse_Wheel_Scroll() > 0)
 	{
 		cameraView.AddZoom(0.05f);
 		input.Set_Mouse_Wheel(0.0, 0.0);
-		//Graphic::GetGraphic()->get_need_update_sprite() = true;
 	}
-
+	//rotate camera
+	if (input.Is_Key_Pressed(GLFW_KEY_DELETE))
+	{
+		camera.Rotate(0.05f);
+	}
+	if (input.Is_Key_Pressed(GLFW_KEY_PAGE_DOWN))
+	{
+		camera.Rotate(-0.05f);
+	}
+	//reset camera
+	if (input.Is_Key_Pressed(GLFW_KEY_END))
+	{
+		cameraView.SetZoom(0.7f);
+		camera.ResetUp();
+	}
 	if (input.Is_Key_Pressed(GLFW_KEY_RIGHT))
 	{
 		vector2<float> new_center = camera.GetCenter();
 		new_center.x += 1.0f;
 		camera.SetCenter(new_center);
-		//Graphic::GetGraphic()->get_need_update_sprite() = true;
 	}
 	if (input.Is_Key_Pressed(GLFW_KEY_LEFT))
 	{
 		vector2<float> new_center = camera.GetCenter();
 		new_center.x -= 1.0f;
 		camera.SetCenter(new_center);
-		//Graphic::GetGraphic()->get_need_update_sprite() = true;
 	}
 	if (input.Is_Key_Pressed(GLFW_KEY_DOWN))
 	{
 		vector2<float> new_center = camera.GetCenter();
 		new_center.y -= 1.0f;
 		camera.SetCenter(new_center);
-		//Graphic::GetGraphic()->get_need_update_sprite() = true;
 	}
 	if (input.Is_Key_Pressed(GLFW_KEY_UP))
 	{
 		vector2<float> new_center = camera.GetCenter();
 		new_center.y += 1.0f;
 		camera.SetCenter(new_center);
-		//Graphic::GetGraphic()->get_need_update_sprite() = true;
 	}
 }
 

@@ -113,6 +113,35 @@ constexpr vector2<T> operator/(const vector2<T>& v, T divisor) noexcept
 	return result_vec;
 }
 
+
+template <typename T>
+constexpr  bool operator==(const vector2<T>& v1, const vector2<T>& v2) noexcept
+{
+	if (std::abs(v1.x - v2.x) <= std::numeric_limits<T>::epsilon() &&
+		std::abs(v1.y - v2.y) <= std::numeric_limits<T>::epsilon())
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+template <typename T>
+constexpr  bool operator!=(const vector2<T>& v1, const vector2<T>& v2) noexcept
+{
+	if (std::abs(v1.x - v2.x) <= std::numeric_limits<T>::epsilon() &&
+		std::abs(v1.y - v2.y) <= std::numeric_limits<T>::epsilon())
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
 template <typename T>
 constexpr T dot(vector2<T> a, vector2<T> b) noexcept
 {

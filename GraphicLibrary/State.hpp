@@ -3,7 +3,7 @@
 
 enum class DemoState
 {
-	menu, Demo1, Demo2, Demo3, NA
+	menu, Demo1, Demo2, NA
 };
 
 class State
@@ -27,6 +27,14 @@ public:
 	DemoState GetStateInfo()
 	{
 		return current_state;
+	}
+	bool& Get_is_next()
+	{
+		return is_next;
+	}
+	std::string& Get_next_level()
+	{
+		return next_level;
 	}
 protected:
 	std::string next_level;

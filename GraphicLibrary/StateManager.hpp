@@ -21,6 +21,10 @@ public:
 	}
 
 	bool is_pause = true;
+	State& Get_current_state()
+	{
+		return *current_state;
+	}
 private:
 	static StateManager* state_manager;
 

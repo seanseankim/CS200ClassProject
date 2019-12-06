@@ -14,7 +14,7 @@ class Sprite : public Component
 public:
 	Sprite(Object* obj, ObjectShape objShape, vector2<float> position, vector2<float> scale, Color4ub color = {255,255,255,255});
 	Sprite(Object* obj, ObjectShape objShape, const char* staticSpritePath, vector2<float> position, vector2<float> scale, Color4ub color = { 255,255,255,255 });
-	Sprite(Object* obj, ObjectShape objShape, const char* aniamtedSpritePath, bool animated, int frames, vector2<float> position, vector2<float> scale, Color4ub color = { 255,255,255,255 });
+	Sprite(Object* obj, ObjectShape objShape, const char* aniamtedSpritePath, bool animated, int frames, float m_speed, vector2<float> position, vector2<float> scale, Color4ub color = { 255,255,255,255 });
 	void Init(Object* obj) override;
 	void Update(float dt) override;
 	bool Can_Load_To_Texture(Texture& texture, const char* file_path);
@@ -42,11 +42,11 @@ private:
 	Texture texture;
 	Image image;
 
-	float seconds = 0;
+	float seconds = 1000;
 	float width = 1280, height = 720;
 
 	bool is_animated = false;
 	int frame = 0;
-	int speed = 100;
 	float spriteWidth = 0;
+	float speed = 1;
 };

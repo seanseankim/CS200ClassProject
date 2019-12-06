@@ -1,16 +1,15 @@
 #pragma once
 #include "State.hpp"
 #include "Object.hpp"
-#include "Component_Text.hpp"
 #include <string>
 #include <iostream>
 
-class Start : public State
+class Demo2 : public State
 {
 public:
-	Start()
+	Demo2()
 	{
-		current_state = DemoState::menu;
+		current_state = DemoState::Demo2;
 	}
 
 	virtual void Load();
@@ -21,20 +20,14 @@ public:
 		is_next = false;
 	}
 	void Clear();
-	static Start* Get_Start()
+	static Demo2* Get_Demo2()
 	{
-		return start;
+		return demo2;
 	}
-
 private:
-
-	static Start* start;
+	static Demo2* demo2;
 
 	Object* player;
+	Object* bowser;
 	Object* pipe;
-	Object* mountain;
-	Object* ground; 
-	Object* sun;
-
-	BitmapFont font{};
 };

@@ -49,7 +49,7 @@ Mesh Sprite::Helper_make_mesh(ObjectShape objShape, vector2<float> scale, Color4
 	}
 	/*else if (objShape == ObjectShape::QUAD)
 	{
-		
+
 	}*/
 	else
 	{
@@ -85,7 +85,7 @@ Sprite::Sprite(Object* obj, ObjectShape objShape, const char* staticSpritePath, 
 	material.shader = &(SHADER::textured());
 	if (!Can_Load_To_Texture(texture, path))
 	{
-	
+
 	}
 	texture.SelectTextureForSlot(texture);
 	material.textureUniforms["texture_to_sample"] = { &(texture) };
@@ -94,7 +94,7 @@ Sprite::Sprite(Object* obj, ObjectShape objShape, const char* staticSpritePath, 
 	Mesh newMesh = Helper_make_mesh(objShape, scale, color);
 	shape.InitializeWithMeshAndLayout(newMesh, SHADER::textured_vertex_layout());
 
-	m_owner->SetMesh(newMesh); 
+	m_owner->SetMesh(newMesh);
 	m_owner->Get_Object_Points() = m_owner->GetMesh().Get_Points();
 	m_owner->SetTranslation(position);
 	m_owner->Set_Center({ position.x , position.y });
@@ -108,7 +108,7 @@ Sprite::Sprite(Object* obj, ObjectShape objShape, const char* staticSpritePath, 
 
 }
 
-Sprite::Sprite(Object* obj, ObjectShape objShape, const char* aniamtedSpritePath, bool animated, int frames, vector2<float> position, vector2<float> scale, Color4ub color)
+Sprite::Sprite(Object* obj, ObjectShape objShape, const char* aniamtedSpritePath, bool animated, int frames, float m_speed, vector2<float> position, vector2<float> scale, Color4ub color)
 {
 	m_owner = obj;
 	is_animated = animated;
@@ -117,37 +117,39 @@ Sprite::Sprite(Object* obj, ObjectShape objShape, const char* aniamtedSpritePath
 	material.shader = &(SHADER::textured());
 	if (!Can_Load_To_Texture(texture, path))
 	{
-		
+
 	}
 	texture.SelectTextureForSlot(texture);
 	material.textureUniforms["texture_to_sample"] = { &(texture) };
 	material.color4fUniforms["color"] = { 1.0f };
 
 	Mesh square;
-	square = MESH::create_box(100, { 100,100,100,255 });
+	square = MESH::create_box(scale.x, { 100,100,100,255 });
 	shape.InitializeWithMeshAndLayout(square, SHADER::textured_vertex_layout());
 
 	m_owner->SetMesh(square);
+	m_owner->GetMesh().AddTextureCoordinate({ spriteWidth , 1 });
+	m_owner->GetMesh().AddTextureCoordinate({ spriteWidth , 0 });
+	spriteWidth += float(1.0 / frame);
 	m_owner->Get_Object_Points() = m_owner->GetMesh().Get_Points();
 	m_owner->SetTranslation(position);
 	m_owner->Set_Center({ position.x , position.y });
-
+	speed = m_speed;
 	matrix3<float> mat_ndc = Graphic::GetGraphic()->GetView().GetCameraView().GetCameraToNDCTransform();
 	mat_ndc *= Graphic::GetGraphic()->GetView().GetCamera().WorldToCamera();
 	mat_ndc *= m_owner->GetTransform().GetModelToWorld();
 
 	material.matrix3Uniforms["to_ndc"] = mat_ndc * MATRIX3::build_scale(2.0f / Get_Width(), 2.0f / Get_Height());
 
+	material.floatUniforms["time"] = 1;
 }
 
 void Sprite::Update(float dt)
 {
 	shape.UpdateVerticesFromMesh(m_owner->GetMesh());
 
-	seconds += dt;
-	uint32_t ticks = seconds + 1;
-
-	if (is_animated)
+	material.floatUniforms["time"] -= dt * speed;
+	if (is_animated && material.floatUniforms["time"] <= 0)
 	{
 		m_owner->GetMesh().ClearTextureCoordinates();
 		if (spriteWidth <= 1)
@@ -168,8 +170,16 @@ void Sprite::Update(float dt)
 		m_owner->SetMesh(m_owner->GetMesh());
 		shape.UpdateVerticesFromMesh(m_owner->GetMesh());
 
+		matrix3<float> mat_ndc = Graphic::GetGraphic()->GetView().GetCameraView().GetCameraToNDCTransform();
+		mat_ndc *= Graphic::GetGraphic()->GetView().GetCamera().WorldToCamera();
+		mat_ndc *= m_owner->GetTransform().GetModelToWorld();
+
+		m_owner->GetMesh().Get_Is_Moved() = false;
+		material.matrix3Uniforms["to_ndc"] = mat_ndc;
+		material.floatUniforms["time"] = 1;
+		Graphic::GetGraphic()->Draw(shape, material);
 	}
-	if (m_owner->GetMesh().Get_Is_Moved() || Graphic::GetGraphic()->get_need_update_sprite() || m_owner->Get_Tag() == "arena" || m_owner->Get_Tag() == "text")
+	if (!is_animated && m_owner->GetMesh().Get_Is_Moved() || Graphic::GetGraphic()->get_need_update_sprite() || m_owner->Get_Tag() == "arena" || m_owner->Get_Tag() == "pipe1" || m_owner->Get_Tag() == "pipe2")
 	{
 		matrix3<float> mat_ndc = Graphic::GetGraphic()->GetView().GetCameraView().GetCameraToNDCTransform();
 		mat_ndc *= Graphic::GetGraphic()->GetView().GetCamera().WorldToCamera();
@@ -177,10 +187,7 @@ void Sprite::Update(float dt)
 
 		m_owner->GetMesh().Get_Is_Moved() = false;
 		material.matrix3Uniforms["to_ndc"] = mat_ndc;
+
+		Graphic::GetGraphic()->Draw(shape, material);
 	}
-
-	material.floatUniforms["time"] = seconds;
-
-	Graphic::GetGraphic()->Draw(shape, material);
-
 }
