@@ -128,3 +128,23 @@ inline const VertexLayoutDescription& SHADER::textured_vertex_layout() noexcept
 										  VertexLayoutDescription::TextureCoordinates2WithFloats };
 	return layout;
 }
+
+inline Shader& SHADER::instancing() noexcept
+{
+	static Shader shader(R"(
+#version 330
+
+}
+)",
+R"(
+#version 330
+)");
+	return shader;
+}
+
+inline const VertexLayoutDescription& SHADER::instanced_vertex_layout() noexcept
+{
+	static VertexLayoutDescription layout{ VertexLayoutDescription::Position2WithFloats,
+										  VertexLayoutDescription::Color4WithUnsignedBytes };
+	return layout;
+}

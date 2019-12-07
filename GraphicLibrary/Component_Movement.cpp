@@ -9,6 +9,7 @@ void Movement::Init(Object* obj)
 
 void Movement::Update(float dt)
 {
+	dt;
 	if (input.Is_Key_Pressed(GLFW_KEY_W))
 	{
 		m_owner->GetTransform().AddTranslation({ 0.0f, 1.0f });
@@ -74,7 +75,7 @@ void Movement::Update(float dt)
 	if (input.Is_Key_Pressed(GLFW_KEY_Z))
 	{
 		float original_scale = m_owner->GetTransform().GetScale().x;
-		original_scale += (0.01);
+		original_scale += (0.01f);
 		m_owner->GetTransform().SetScale(original_scale);
 
 		m_owner->GetMesh().Get_Is_Moved() = true;
@@ -83,7 +84,7 @@ void Movement::Update(float dt)
 	if (input.Is_Key_Pressed(GLFW_KEY_C))
 	{
 		float original_scale = m_owner->GetTransform().GetScale().x;
-		original_scale -= (0.01);
+		original_scale -= (0.01f);
 		m_owner->GetTransform().SetScale(original_scale);
 
 		m_owner->GetMesh().Get_Is_Moved() = true;
@@ -102,7 +103,7 @@ void Movement::Update(float dt)
 		Application* currentApp = Application::Get_Application();
 		vector2<float> windowSize;
 		windowSize = currentApp->Get_Window_Size();
-		auto screenShot = capture_screenshot_of_back_buffer_to_image(windowSize.x, windowSize.y);
+		auto screenShot = capture_screenshot_of_back_buffer_to_image(static_cast<int>(windowSize.x), static_cast<int>(windowSize.y));
 		screenShot.SaveToPNG("Screenshot.png");
 
 	}

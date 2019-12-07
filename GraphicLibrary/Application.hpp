@@ -14,10 +14,11 @@ private:
 	Application() {}
 	static Application* application;
 
-	GLFWwindow* window;
-	bool is_vsync_on;
-	int x_pos, y_pos;
-	int width, height;
+	GLFWwindow* window{};
+	GLFWmonitor* monitor{};
+	bool is_vsync_on = false;
+	int x_pos = 0, y_pos = 0;
+	int width = 1280 , height = 720;
 
 	float temp_dt = 0.0f;
 	int FPS_frame = 0;

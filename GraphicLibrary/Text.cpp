@@ -70,23 +70,22 @@ void Text::BuildNewMeshesIfNeeded() const noexcept
 	{
 		Mesh     new_mesh;
 		Vertices vertice;
-		std::pair<int, int>  cursor{ 0.0f , 0.0f};
+		std::pair<int, int>  cursor{ 0 , 0};
 		for (const auto& content : string)
 		{
 			const BitmapFont::character& character = font->GetCharacter(content);
 			new_mesh.SetPointListType(PointListPattern::Triangles);
 			if (character.page == i)
 			{
+				float left = static_cast<float>(character.xOffset) + static_cast<float>(cursor.first);
+				float bottom = static_cast<float>((character.yOffset + character.height) * -1 + font->GetLineHeight()) + static_cast<float>(cursor.second);
+				float right = static_cast<float>(left) + static_cast<float>(character.width);
+				float top = static_cast<float>(bottom) + static_cast<float>(character.height);
 
-				float left = character.xOffset + cursor.first;
-				float bottom = (character.yOffset + character.height) * -1 + font->GetLineHeight() + cursor.second;
-				float right = left + character.width;
-				float top = bottom + character.height;
-
-				float left_u_vec = static_cast<float>(character.x) / information.imageWidth;
-				float right_u_vec = static_cast<float>(character.x + character.width) / information.imageWidth;
-				float top_v_vec = static_cast<float>(character.y) / information.imageHeight;
-				float bottom_v_vec = static_cast<float>(character.y + character.height) / information.imageHeight;
+				float left_u_vec = static_cast<float>(character.x) / static_cast<float>(information.imageWidth);
+				float right_u_vec = static_cast<float>(character.x + character.width) / static_cast<float>(information.imageWidth);
+				float top_v_vec = static_cast<float>(character.y) / static_cast<float>(information.imageHeight);
+				float bottom_v_vec = static_cast<float>(character.y + character.height) / static_cast<float>(information.imageHeight);
 
 				new_mesh.AddPoint(vector2{ left, top });
 				new_mesh.AddPoint(vector2{ right, top });
@@ -119,7 +118,7 @@ void Text::BuildNewMeshesIfNeeded() const noexcept
 
 			else if (content == L'\n')
 			{
-				cursor.first = 0.0f;
+				cursor.first = 0;
 				cursor.second -= information.lineHeight;
 			}
 			

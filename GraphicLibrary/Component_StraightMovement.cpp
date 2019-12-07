@@ -7,6 +7,7 @@ void StraightMovement::Init(Object* obj)
 
 void StraightMovement::Update(float dt)
 {
+	dt;
 	if (m_owner->GetTransform().GetTranslation().x == 0)
 	{
 		translate = 5.0f;

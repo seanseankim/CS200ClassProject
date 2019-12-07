@@ -82,9 +82,9 @@ public:
 	{
 		return tag;
 	}
-	void Set_Tag(std::string tag)
+	void Set_Tag(std::string n_tag)
 	{
-		this->tag = tag;
+		this->tag = n_tag;
 	}
 	std::vector<vector2<float>>& Get_Normalize_Points()
 	{

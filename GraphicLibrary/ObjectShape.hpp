@@ -1,6 +1,6 @@
 #pragma once
 
-enum ObjectShape {
+enum class ObjectShape {
 	SQUARE,
 	CIRCLE,
 	ELLIPSE,

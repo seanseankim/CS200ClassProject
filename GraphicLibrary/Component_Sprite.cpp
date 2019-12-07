@@ -7,9 +7,9 @@
 #include "Object.hpp"
 
 
-bool Sprite::Can_Load_To_Texture(Texture& texture, const char* file_path)
+bool Sprite::Can_Load_To_Texture(Texture& n_texture, const char* file_path)
 {
-	const bool is_okay = texture.LoadFromPNG(file_path);
+	const bool is_okay = n_texture.LoadFromPNG(file_path);
 	if (!is_okay)
 	{
 		//std::cerr << "Failed to load \"" << file_path << "\"\n";
@@ -45,12 +45,8 @@ Mesh Sprite::Helper_make_mesh(ObjectShape objShape, vector2<float> scale, Color4
 	}
 	else if (objShape == ObjectShape::TRIANGLE)
 	{
-		newMesh = MESH::create_triangle({ 0,0 }, { 1,0 }, scale, color);
+		newMesh = MESH::create_triangle(scale, color);
 	}
-	/*else if (objShape == ObjectShape::QUAD)
-	{
-
-	}*/
 	else
 	{
 		newMesh = MESH::create_line({ 0,0 }, { 1,0 }, scale, color);
@@ -108,7 +104,7 @@ Sprite::Sprite(Object* obj, ObjectShape objShape, const char* staticSpritePath, 
 
 }
 
-Sprite::Sprite(Object* obj, ObjectShape objShape, const char* aniamtedSpritePath, bool animated, int frames, float m_speed, vector2<float> position, vector2<float> scale, Color4ub color)
+Sprite::Sprite(Object* obj, const char* aniamtedSpritePath, bool animated, int frames, float m_speed, vector2<float> position, vector2<float> scale, Color4ub color)
 {
 	m_owner = obj;
 	is_animated = animated;
@@ -121,16 +117,21 @@ Sprite::Sprite(Object* obj, ObjectShape objShape, const char* aniamtedSpritePath
 	}
 	texture.SelectTextureForSlot(texture);
 	material.textureUniforms["texture_to_sample"] = { &(texture) };
-	material.color4fUniforms["color"] = { 1.0f };
+	material.color4fUniforms["color"] = to_color4f(color);
 
 	Mesh square;
 	square = MESH::create_box(scale.x, { 100,100,100,255 });
 	shape.InitializeWithMeshAndLayout(square, SHADER::textured_vertex_layout());
 
 	m_owner->SetMesh(square);
+
+	m_owner->GetMesh().ClearTextureCoordinates();
 	m_owner->GetMesh().AddTextureCoordinate({ spriteWidth , 1 });
 	m_owner->GetMesh().AddTextureCoordinate({ spriteWidth , 0 });
 	spriteWidth += float(1.0 / frame);
+	m_owner->GetMesh().AddTextureCoordinate({ spriteWidth , 0 });
+	m_owner->GetMesh().AddTextureCoordinate({ spriteWidth , 1 });
+
 	m_owner->Get_Object_Points() = m_owner->GetMesh().Get_Points();
 	m_owner->SetTranslation(position);
 	m_owner->Set_Center({ position.x , position.y });

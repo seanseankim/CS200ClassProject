@@ -9,7 +9,7 @@
 #include "ObjectShape.hpp"
 #include "ObjectManager.hpp"
 
-#define SKY {0.517647088, 0.611764729, 0.760784328, 1}
+#define SKY {0.517647088f, 0.611764729f, 0.760784328f, 1}
 #define BUTTON {224, 179, 110}
 #define MOUNTAIN {20, 130, 36}
 
@@ -61,6 +61,7 @@ void Start::Load()
 	{
 		std::cout << "Failed to Load Font!" << std::endl;
 	}
+
 	
 	Object* text = new Object();
 	text->SetTranslation({ 0,300 });
@@ -83,12 +84,12 @@ void Start::Load()
 
 void Start::Update(float dt)
 {
-
+	dt;
 }
 
 void Start::Clear()
 {
-	unsigned int number_of_objects = level1_obj_manager->GetObjectManagerContainer().size();
+	unsigned int number_of_objects = static_cast<unsigned int>(level1_obj_manager->GetObjectManagerContainer().size());
 	for (unsigned int i = 0; i < number_of_objects; ++i)
 	{
 		Object* to_be_deleted = level1_obj_manager->GetObjectManagerContainer()[i].get();

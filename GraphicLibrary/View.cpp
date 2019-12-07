@@ -12,6 +12,7 @@ void View::Init()
 
 void View::Update(float dt)
 {
+	dt;
 	//zoom in or out
 	if (input.Mouse_Wheel_Scroll() < 0)
 	{

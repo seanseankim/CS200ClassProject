@@ -59,5 +59,5 @@ namespace MESH
 	Mesh create_wire_rectangle(float width = 1, float height = 1, Color4ub color = Color4ub{ 255 }) noexcept;
 	Mesh create_wire_box(float dimension = 1, Color4ub color = Color4ub{ 255 }) noexcept;
 	Mesh create_line(vector2<float> a = { 0, 0 }, vector2<float> b = { 1, 0 }, vector2<float> scale = { 1,1 }, Color4ub color = Color4ub{ 255 }) noexcept;
-	Mesh create_triangle(vector2<float> a = { 0, 0 }, vector2<float> b = { 1, 0 }, vector2<float> scale = { 1,1 }, Color4ub color = Color4ub{ 255 }) noexcept;
+	Mesh create_triangle(vector2<float> scale = { 1,1 }, Color4ub color = Color4ub{ 255 }) noexcept;
 }

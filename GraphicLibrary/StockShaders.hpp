@@ -15,6 +15,9 @@ namespace SHADER
 	Shader& textured() noexcept;
 	const VertexLayoutDescription& textured_vertex_layout() noexcept;
 
+	Shader& instancing() noexcept;
+	const VertexLayoutDescription& instanced_vertex_layout() noexcept;
+
 	constexpr const char* Uniform_ToNDC = "to_ndc";
 	constexpr const char* Uniform_Depth = "depth";
 	constexpr const char* Uniform_Color = "color";

@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-#include "angles.hpp"
+#include "angle.hpp"
 #include "vector2.hpp"
 #include "vector3.hpp"
 #include "matrix3.hpp"
@@ -13,13 +13,6 @@ TEST_CASE("Vector2 Contructors")
 	vector2<float> floatCtorTest2{ 2.f, 3.f };
 	REQUIRE(floatCtorTest2.x == 2.f);
 	REQUIRE(floatCtorTest2.y == 3.f);
-
-	vector2<int> intCtorTest{ 1 };
-	REQUIRE(intCtorTest.x == 1);
-	REQUIRE(intCtorTest.y == 1);
-	vector2<int> intCtorTest2{ 34, 5 };
-	REQUIRE(intCtorTest2.x == 34);
-	REQUIRE(intCtorTest2.y == 5);
 }
 
 TEST_CASE("Vector2 Basic Operators")

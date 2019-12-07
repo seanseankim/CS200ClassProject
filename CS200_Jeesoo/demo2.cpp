@@ -7,6 +7,7 @@
 #include "Component_StraightMovement.hpp"
 #include "Graphic.hpp"
 #include "ObjectManager.hpp"
+#include "Instancing.hpp"
 #include "GL.hpp"
 
 #define BACKGROUND {0,0,0,1}
@@ -33,7 +34,7 @@ void Demo2::Load()
 	ObjectManager::GetObjectManager()->AddObject(player);
 
 	bowser = new Object();
-	bowser->AddComponent(new Sprite(bowser, ObjectShape::SQUARE, "../sprite/animatedBowser.png", true, 6, 10.0f, { 800,-130 }, { 200,200 }));
+	bowser->AddComponent(new Sprite(bowser,"../sprite/animatedBowser.png", true, 6, 10.0f, { 800,-130 }, { 200,200 }));
 	bowser->Set_Tag("arena");
 	ObjectManager::GetObjectManager()->AddObject(bowser);
 
@@ -43,10 +44,15 @@ void Demo2::Load()
 	pipe->Set_Tag("pipe2");
 	ObjectManager::GetObjectManager()->AddObject(pipe);
 
+	/*Object* instanced = new Object(); 
+	instanced->AddComponent(new Instancing(instanced, false, 10000, ObjectShape::SQUARE, { -400, -200 }, { 0.1, 0.1 }, {255,12,42,255}));
+	ObjectManager::GetObjectManager()->AddObject(instanced);
+*/
+
 }
 void Demo2::Update(float dt) 
 {
-
+	dt;
 }
 
 void Demo2::Clear()

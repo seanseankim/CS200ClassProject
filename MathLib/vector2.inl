@@ -241,8 +241,8 @@ template <typename T>
 constexpr vector2<T>             rotate_by(T angle_in_radians, vector2<T> v) noexcept
 {
 	vector2<T> result_vec;
-	result_vec.x = ((cos(angle_in_radians) * v.x) - (sin(angle_in_radians) * v.y));
-	result_vec.y = ((sin(angle_in_radians) * v.x) + (cos(angle_in_radians) * v.y));
+	result_vec.x = static_cast<T>((cos(angle_in_radians) * v.x) - (sin(angle_in_radians) * v.y));
+	result_vec.y = static_cast<T>((sin(angle_in_radians) * v.x) + (cos(angle_in_radians) * v.y));
 
 	return result_vec;
 }

@@ -26,12 +26,12 @@ public:
 	}
 private:
 	static Demo1* demo1;
-	Object* player;
-	Object* animatedObject;
-	Object* animatedObject_2;	
-	Object* animatedObject_3; 
-	Object* ground;
-	Object* top_ground;
-	Object* turtle;
-	Object* pipe;
+	Object* player{};
+	Object* animatedObject{};
+	Object* animatedObject_2{};
+	Object* animatedObject_3{};
+	Object* ground{};
+	Object* top_ground{};
+	Object* turtle{};
+	Object* pipe{};
 };

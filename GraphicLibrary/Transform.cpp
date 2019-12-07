@@ -71,10 +71,10 @@ void Transform::SetTranslation(const vector2<float>& new_translation) noexcept
 	translation.y = new_translation.y;
 }
 
-void Transform::AddTranslation(const vector2<float>& translation)
+void Transform::AddTranslation(const vector2<float>& n_translation)
 {
-	this->translation.x += translation.x;
-	this->translation.y += translation.y;
+	this->translation.x += n_translation.x;
+	this->translation.y += n_translation.y;
 }
 
 vector2<float> Transform::Get_Save_Translation()const noexcept

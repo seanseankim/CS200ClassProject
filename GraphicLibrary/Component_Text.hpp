@@ -17,7 +17,7 @@
 class TextComp : public Component
 {
 public:
-	TextComp();
+	TextComp() = default;
 	TextComp(Object* obj, std::wstring text_string, Color4f color, vector2<float> size, BitmapFont& font);
 	void Init(Object* obj) override;
 	void Update(float dt) override;

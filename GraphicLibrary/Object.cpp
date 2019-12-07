@@ -68,13 +68,13 @@ Object* Object::Get_Belong_Object_By_Name(std::string name)
 	return nullptr;
 }
 
-Object* Object::Get_Belong_Object_By_Tag(std::string tag)
+Object* Object::Get_Belong_Object_By_Tag(std::string n_tag)
 {
 	if (!belongs_object.empty())
 	{
 		for (Object* obj : belongs_object)
 		{
-			if (obj->Get_Tag() == tag)
+			if (obj->Get_Tag() == n_tag)
 			{
 				return obj;
 			}

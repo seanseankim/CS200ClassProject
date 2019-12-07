@@ -49,37 +49,37 @@ void Demo1::Load()
 	ObjectManager::GetObjectManager()->AddObject(top_ground);
 
 	animatedObject = new Object();
-	animatedObject->AddComponent(new Sprite(animatedObject, ObjectShape::SQUARE, "../sprite/animatedBoo.png", true, 7, 1.0f,{ 400,200 }, { 100,100 }));
+	animatedObject->AddComponent(new Sprite(animatedObject,"../sprite/animatedBoo.png", true, 7, 1.0f,{ 400,200 }, { 100,100 }));
 	animatedObject->AddComponent(new RandomMovement);
 	animatedObject->Set_Tag("arena"); 
 	ObjectManager::GetObjectManager()->AddObject(animatedObject);
 
 	animatedObject_2 = new Object();
-	animatedObject_2->AddComponent(new Sprite(animatedObject_2, ObjectShape::SQUARE, "../sprite/animatedBoo.png", true, 7, 5.0f, { 200,200 }, { 100,100 }));
+	animatedObject_2->AddComponent(new Sprite(animatedObject_2, "../sprite/animatedBoo.png", true, 7, 5.0f, { 200,200 }, { 100,100 }));
 	animatedObject_2->AddComponent(new RandomMovement);
 	animatedObject_2->Set_Tag("arena");
 	ObjectManager::GetObjectManager()->AddObject(animatedObject_2);
 
 	animatedObject_3 = new Object();
-	animatedObject_3->AddComponent(new Sprite(animatedObject_3, ObjectShape::SQUARE, "../sprite/animatedBoo.png", true, 7, 50.0f, { 0, 200 }, { 100,100 }));
+	animatedObject_3->AddComponent(new Sprite(animatedObject_3, "../sprite/animatedBoo.png", true, 7, 100.0f, { 0, 200 }, { 100,100 }));
 	animatedObject_3->AddComponent(new RandomMovement);
 	animatedObject_3->Set_Tag("arena");
 	ObjectManager::GetObjectManager()->AddObject(animatedObject_3);
 
-	Object* turtle = new Object();
-	turtle->AddComponent(new Sprite(turtle, ObjectShape::SQUARE, "../sprite/animatedTurtle.png", true, 5, 25.0f, { 250,-190 }, { 100,100 }));
+	turtle = new Object();
+	turtle->AddComponent(new Sprite(turtle, "../sprite/animatedTurtle.png", true, 5, 25.0f, { 250,-190 }, { 100,100 }));
 	turtle->AddComponent(new StraightMovement);
 	turtle->Set_Tag("arena");
 	ObjectManager::GetObjectManager()->AddObject(turtle);
 }
 void Demo1::Update(float dt)
 {
-
+	dt;
 }
 
 void Demo1::Clear()
 {
-	unsigned int number_of_objects = demo1_obj_manager->GetObjectManagerContainer().size();
+	unsigned int number_of_objects = static_cast<unsigned int>(demo1_obj_manager->GetObjectManagerContainer().size());
 	for (unsigned int i = 0; i < number_of_objects; ++i)
 	{
 		Object* to_be_deleted = demo1_obj_manager->GetObjectManagerContainer()[i].get();

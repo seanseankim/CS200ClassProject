@@ -7,9 +7,9 @@ void RandomMovement::Init(Object* obj)
 
 void RandomMovement::Update(float dt)
 {
-	bool is_move_random = false;
+	dt;
 	time_t t;
-	srand(time(&t));
+	srand(static_cast<unsigned int>(time(&t)));
 	m_owner->GetTransform().AddTranslation({ static_cast<float>(rand() % 5 - 2.5), static_cast<float>(rand() % 5 - 2) });
 
 	m_owner->GetMesh().Get_Is_Moved() = true;

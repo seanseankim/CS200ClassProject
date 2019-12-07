@@ -31,6 +31,7 @@ bool BitmapFont::LoadFromFile(const std::filesystem::path& filename)
 		}
 		return true;
 	}
+	return false;
 }
 const BitmapFont::information& BitmapFont::GetInformation() const noexcept
 {

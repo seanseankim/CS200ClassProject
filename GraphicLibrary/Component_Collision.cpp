@@ -19,10 +19,11 @@ void Collision::Init(Object* obj)
 
 void Collision::Update(float dt)
 {
+	dt;
 	is_collided = false;
 
 	objManager = ObjectManager::GetObjectManager();
-	unsigned int number_of_objects = objManager->GetObjectManagerContainer().size();
+	unsigned int number_of_objects = static_cast<unsigned int>(objManager->GetObjectManagerContainer().size());
 	for (unsigned int i = 0; i < number_of_objects; ++i)
 	{
 		Object* obj_i = objManager->GetObjectManagerContainer()[i].get();

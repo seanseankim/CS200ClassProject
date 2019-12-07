@@ -54,7 +54,7 @@ namespace MESH
 	{
 		Mesh box;
 
-		vector2 pos(dimension / 2);
+		vector2<float> pos(dimension / 2);
 
 		box.AddPoint({ -pos.x, -pos.y });
 		box.AddPoint({ -pos.x, pos.y });
@@ -77,7 +77,7 @@ namespace MESH
 	{
 		Mesh rectangle;
 
-		vector2 pos(width / 2, height / 2);
+		vector2<float> pos(width / 2, height / 2);
 
 		rectangle.AddPoint({ -pos.x, -pos.y });
 		rectangle.AddPoint({ -pos.x, pos.y });
@@ -100,7 +100,7 @@ namespace MESH
 	{
 		Mesh rectangle;
 
-		vector2 pos(width / 2, height / 2);
+		vector2<float> pos(width / 2, height / 2);
 
 		rectangle.AddPoint({ -pos.x, -pos.y });
 		rectangle.AddPoint({ -pos.x, pos.y });
@@ -117,7 +117,7 @@ namespace MESH
 	{
 		Mesh box;
 
-		vector2 pos(dimension / 2);
+		vector2<float> pos(dimension / 2);
 
 		box.AddPoint({ -pos.x, -pos.y });
 		box.AddPoint({ -pos.x, pos.y });
@@ -143,7 +143,7 @@ namespace MESH
 
 		return line;
 	}
-	Mesh create_triangle(vector2<float> a, vector2<float> b, vector2<float> scale, Color4ub color) noexcept
+	Mesh create_triangle(vector2<float> scale, Color4ub color) noexcept
 	{
 		Mesh traingle;
 

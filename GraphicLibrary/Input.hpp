@@ -25,8 +25,8 @@ public:
 	void Triggered_Reset();
 	void Set_Keyboard_Input(int key, int action);
 	void Set_Mouse_Input(int button, int action);
-	void Set_Mouse_Position(double x, double y);
-	void Set_Mouse_Wheel(double x, double y);
+	void Set_Mouse_Position(float x, float y);
+	void Set_Mouse_Wheel(float x, float y);
 	void Init();
 
 	bool Is_Key_Triggered(int key);

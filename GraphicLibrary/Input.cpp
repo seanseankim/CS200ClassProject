@@ -133,7 +133,7 @@ void Input::Set_Mouse_Input(int button, int action)
 	}
 }
 
-void Input::Set_Mouse_Position(double x, double y)
+void Input::Set_Mouse_Position(float x, float y)
 {
 	float w = Application::Get_Application()->Get_Window_Size().x;
 	float h = Application::Get_Application()->Get_Window_Size().y;
@@ -142,7 +142,7 @@ void Input::Set_Mouse_Position(double x, double y)
 	mouse_position.y = h / 2.f - y;
 }
 
-void Input::Set_Mouse_Wheel(double x, double y)
+void Input::Set_Mouse_Wheel(float x, float y)
 {
 	x_offset = x;
 	y_offset = y;

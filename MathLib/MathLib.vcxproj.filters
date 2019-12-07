@@ -30,7 +30,7 @@
     <ClInclude Include="vector3.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="angles.hpp">
+    <ClInclude Include="angle.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

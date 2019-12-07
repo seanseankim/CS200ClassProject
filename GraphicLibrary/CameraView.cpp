@@ -33,7 +33,7 @@
 
 void helper_set_ndc(matrix3<float>& camtoNDC, CameraView::FrameOfReference frame_reference, vector2<float> display_size, float zoom = 1)
 {
-	if (frame_reference == CameraView::RightHanded_OriginBottomLeft)
+	if (frame_reference == CameraView::FrameOfReference::RightHanded_OriginBottomLeft)
 	{
 		camtoNDC =
 		{
@@ -44,7 +44,7 @@ void helper_set_ndc(matrix3<float>& camtoNDC, CameraView::FrameOfReference frame
 
 		camtoNDC = MATRIX3::transpose(camtoNDC);
 	}
-	else if (frame_reference == CameraView::RightHanded_OriginCenter)
+	else if (frame_reference == CameraView::FrameOfReference::RightHanded_OriginCenter)
 	{
 		camtoNDC =
 		{
@@ -54,7 +54,7 @@ void helper_set_ndc(matrix3<float>& camtoNDC, CameraView::FrameOfReference frame
 		};
 		camtoNDC = MATRIX3::transpose(camtoNDC);
 	}
-	else if (frame_reference == CameraView::LeftHanded_OriginTopLeft)
+	else if (frame_reference == CameraView::FrameOfReference::LeftHanded_OriginTopLeft)
 	{
 		camtoNDC =
 		{

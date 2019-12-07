@@ -12,12 +12,12 @@ public:
 	{
 		timestamp = clock_t::now();
 	}
-	double GetElapsedSeconds() const
+	float GetElapsedSeconds() const
 	{
 		return std::chrono::duration_cast<second_t>(clock_t::now() - timestamp).count();
 	}
 private:
 	using clock_t = std::chrono::high_resolution_clock;
-	using second_t = std::chrono::duration<double, std::ratio<1>>;
+	using second_t = std::chrono::duration<float, std::ratio<1>>;
 	std::chrono::time_point<clock_t>timestamp;
 };

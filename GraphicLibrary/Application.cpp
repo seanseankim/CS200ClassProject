@@ -1,5 +1,10 @@
 #include "Application.hpp"
-
+#define STBI_ONLY_PNG
+#pragma warning(push)
+#pragma warning(disable : 4505) // unreferenced local function has been removed
+#pragma warning(disable : 4100) // unreferenced formal parameter
+#include <stb_image.h>
+#pragma warning(pop)
 Application* Application::application = nullptr;
 
 
@@ -53,14 +58,20 @@ void Application::Init()
 		return;
 	}
 
-	const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+	//const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+	monitor = glfwGetPrimaryMonitor();
 	glfwSetWindowMonitor(window, nullptr,
 		100,
 		80,
 		static_cast<int>(1280),
 		static_cast<int>(720), 0);
 	window_size = { 1280, 720 };
+
+	GLFWimage icon[1]; 
+	icon[0].pixels = stbi_load("../sprite/TeamLogo.png", &icon[0].width, &icon[0].height, 0, 4);
+	glfwSetWindowIcon(window, 1, icon);
+	stbi_image_free(icon[0].pixels);
+
 	glfwSetKeyCallback(window, key_callback);
 	glfwSetCursorPosCallback(window, cursor_position_callback);
 	glfwSetMouseButtonCallback(window, mouse_button_callback);
@@ -68,6 +79,7 @@ void Application::Init()
 
 	glfwSwapInterval(true);
 }
+
 //void Application::framebuffer_size_callback(GLFWwindow* window, int width, int height)
 //{
 //	glViewport(0, 0, width, height);
@@ -148,12 +160,12 @@ void Application::Toggle_Fullscreen()
 {
 	if (!IsFullScreen())
 	{
-		const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-		GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+		const GLFWvidmode* s_mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+		monitor = glfwGetPrimaryMonitor();
 		glfwGetWindowPos(window, &x_pos, &y_pos);
 		glfwGetWindowSize(window, &width, &height);
-		glfwSetWindowMonitor(window, monitor, 0, 0, mode->width, mode->height, mode->refreshRate);
-		glViewport(0, 0, mode->width, mode->height);
+		glfwSetWindowMonitor(window, monitor, 0, 0, s_mode->width, s_mode->height, s_mode->refreshRate);
+		glViewport(0, 0, s_mode->width, s_mode->height);
 		TurnOnMonitorVerticalSynchronization(is_vsync_on);
 	}
 	else
@@ -181,7 +193,7 @@ namespace
 	}
 	void cursor_position_callback(GLFWwindow* /*window*/, double xpos, double ypos)
 	{
-		input.Set_Mouse_Position(xpos, ypos);
+		input.Set_Mouse_Position(static_cast<float>(xpos), static_cast<float>(ypos));
 	}
 	void key_callback(GLFWwindow* /*window*/, int key, int /*scancode*/, int action, int /*mods*/)
 	{
@@ -189,7 +201,7 @@ namespace
 	}
 	void scroll_callback(GLFWwindow* /*window*/, double xoffset, double yoffset)
 	{
-		input.Set_Mouse_Wheel(xoffset, yoffset);
+		input.Set_Mouse_Wheel(static_cast<float>(xoffset), static_cast<float>(yoffset));
 	}
 	/*void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 	{

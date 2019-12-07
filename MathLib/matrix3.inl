@@ -111,11 +111,11 @@ template <typename T>
 constexpr matrix3<T> MATRIX3::build_rotation(T angle_in_radians) noexcept
 {
 	matrix3<T> rotation_matrix;
-	rotation_matrix.column0.x = cos(angle_in_radians);
-	rotation_matrix.column0.y = sin(angle_in_radians);
+	rotation_matrix.column0.x = static_cast<T>(cos(angle_in_radians));
+	rotation_matrix.column0.y = static_cast<T>(sin(angle_in_radians));
 	rotation_matrix.column0.z = 0.0f;
-	rotation_matrix.column1.x = -(sin(angle_in_radians));
-	rotation_matrix.column1.y = cos(angle_in_radians);
+	rotation_matrix.column1.x = static_cast<T>(-(sin(angle_in_radians)));
+	rotation_matrix.column1.y = static_cast<T>(cos(angle_in_radians));
 	rotation_matrix.column1.z = 0.0f;
 	rotation_matrix.column2.x = 0.0f;
 	rotation_matrix.column2.y = 0.0f;
@@ -143,6 +143,7 @@ constexpr matrix3<T> MATRIX3::build_rotation(T angle_in_radians) noexcept
 template <typename T>
 constexpr  matrix3<T> MATRIX3::build_identity(T iden) noexcept
 {
+	iden;
 	matrix3<T> identity_matrix;
 	identity_matrix.column0.x = 1.0f;
 	identity_matrix.column0.y = 0.0f;

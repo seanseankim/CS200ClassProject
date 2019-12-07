@@ -30,11 +30,12 @@ private:
 
 	static Start* start;
 
-	Object* player;
-	Object* pipe;
-	Object* mountain;
-	Object* ground; 
-	Object* sun;
-
 	BitmapFont font{};
+
+	Object* player{};
+	Object* pipe{};
+	Object* mountain{};
+	Object* ground{};
+	Object* sun{};
+
 };

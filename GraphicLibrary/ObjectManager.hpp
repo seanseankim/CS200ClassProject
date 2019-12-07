@@ -36,5 +36,4 @@ private:
 	std::vector<std::shared_ptr<Object>> objects{};
 	std::vector<std::shared_ptr<Object>> delete_obj{};
 
-	//std::unordered_map<std::string, std::unique_ptr<Object>> objects{};
 };

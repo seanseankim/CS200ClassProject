@@ -27,7 +27,7 @@ public:
 private:
 	static Demo2* demo2;
 
-	Object* player;
-	Object* bowser;
-	Object* pipe;
+	Object* player{};
+	Object* bowser{};
+	Object* pipe{};
 };
