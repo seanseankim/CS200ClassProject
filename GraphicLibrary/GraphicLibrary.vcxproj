@@ -149,7 +149,6 @@
     <ClInclude Include="Graphic.hpp" />
     <ClInclude Include="Image.hpp" />
     <ClInclude Include="Input.hpp" />
-    <ClInclude Include="Instancing.hpp" />
     <ClInclude Include="Material.hpp" />
     <ClInclude Include="Mesh.hpp" />
     <ClInclude Include="Object.hpp" />
@@ -185,7 +184,6 @@
     <ClCompile Include="Graphic.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Input.cpp" />
-    <ClCompile Include="Instancing.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectManager.cpp" />

@@ -99,9 +99,6 @@
     <ClCompile Include="Component_StraightMovement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Instancing.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.hpp">
@@ -210,9 +207,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Component_StraightMovement.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Instancing.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

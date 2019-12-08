@@ -13,7 +13,6 @@
 #include "Component_StraightMovement.hpp"
 #include "Graphic.hpp"
 #include "ObjectManager.hpp"
-#include "Instancing.hpp"
 #include "GL.hpp"
 
 #define BACKGROUND {0,0,0,1}
