@@ -70,16 +70,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+    <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+    <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+    <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+    <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -96,9 +100,15 @@
       <AdditionalDependencies>glew32.lib;glew32s.lib;glfw3.lib;glfw3dll.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(OutDir)$(TargetName)$(TargetExt)" "$(ProjectDir)$(TargetName)$(TargetExt)"
-</Command>
+      <Command>copy "$(OutDir)$(TargetName)$(TargetExt)" "$(ProjectDir)$(TargetName)$(TargetExt)"</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>mkdir $(SolutionDir)$(PlatformName)\assets
+mkdir $(SolutionDir)$(PlatformName)\sprite
+copy $(SolutionDir)\assets $(SolutionDir)$(PlatformName)\assets
+copy $(SolutionDir)\sprite  $(SolutionDir)$(PlatformName)\sprite
+copy $(SolutionDir)\external\glew32.dll $(TargetDir)</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -115,9 +125,15 @@
       <AdditionalDependencies>glew32.lib;glew32s.lib;glfw3.lib;glfw3dll.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(OutDir)$(TargetName)$(TargetExt)" "$(ProjectDir)$(TargetName)$(TargetExt)"
-</Command>
+      <Command>copy "$(OutDir)$(TargetName)$(TargetExt)" "$(ProjectDir)$(TargetName)$(TargetExt)"</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>mkdir $(SolutionDir)$(PlatformName)\assets
+mkdir $(SolutionDir)$(PlatformName)\sprite
+copy $(SolutionDir)\assets $(SolutionDir)$(PlatformName)\assets
+copy $(SolutionDir)\sprite  $(SolutionDir)$(PlatformName)\sprite
+copy $(SolutionDir)\external\glew32.dll $(TargetDir)</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -138,9 +154,15 @@
       <AdditionalDependencies>glew32.lib;glew32s.lib;glfw3.lib;glfw3dll.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(OutDir)$(TargetName)$(TargetExt)" "$(ProjectDir)$(TargetName)$(TargetExt)"
-</Command>
+      <Command>copy "$(OutDir)$(TargetName)$(TargetExt)" "$(ProjectDir)$(TargetName)$(TargetExt)"</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>mkdir $(SolutionDir)$(PlatformName)\assets
+mkdir $(SolutionDir)$(PlatformName)\sprite
+copy $(SolutionDir)\assets $(SolutionDir)$(PlatformName)\assets
+copy $(SolutionDir)\sprite  $(SolutionDir)$(PlatformName)\sprite
+copy $(SolutionDir)\external\glew32.dll $(TargetDir)</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -161,9 +183,15 @@
       <AdditionalDependencies>glew32.lib;glew32s.lib;glfw3.lib;glfw3dll.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(OutDir)$(TargetName)$(TargetExt)" "$(ProjectDir)$(TargetName)$(TargetExt)"
-</Command>
+      <Command>copy "$(OutDir)$(TargetName)$(TargetExt)" "$(ProjectDir)$(TargetName)$(TargetExt)"</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>mkdir $(SolutionDir)$(PlatformName)\assets
+mkdir $(SolutionDir)$(PlatformName)\sprite
+copy $(SolutionDir)\assets $(SolutionDir)$(PlatformName)\assets
+copy $(SolutionDir)\sprite  $(SolutionDir)$(PlatformName)\sprite
+copy $(SolutionDir)\external\glew32.dll $(TargetDir)</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ProjectReference Include="..\GraphicLibrary\GraphicLibrary.vcxproj">
