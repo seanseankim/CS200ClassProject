@@ -1,3 +1,9 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 #include "Component_StraightMovement.hpp"
 
 void StraightMovement::Init(Object* obj)

@@ -1,3 +1,9 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 #include "Input.hpp"
 #include "Application.hpp"
 #include <assert.h>

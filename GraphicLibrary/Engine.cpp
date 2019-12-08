@@ -1,3 +1,9 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 #include "Engine.hpp"
 #include "Application.hpp"
 #include "StateManager.hpp"

@@ -1,6 +1,13 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 #pragma once
 #include "State.hpp"
 #include "Object.hpp"
+#include "Component_Text.hpp"
 #include <string>
 #include <iostream>
 
@@ -28,6 +35,12 @@ private:
 	static Demo2* demo2;
 
 	Object* player{};
+	Object* ground{};
+	Object* ground_1{};
+	Object* ground_2{};
+	Object* top_ground{};
 	Object* bowser{};
 	Object* pipe{};
+
+	BitmapFont font{};
 };

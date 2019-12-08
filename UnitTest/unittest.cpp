@@ -1,3 +1,9 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 #include "angle.hpp"

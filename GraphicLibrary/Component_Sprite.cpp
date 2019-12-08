@@ -1,3 +1,9 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 #include "Component_Sprite.hpp"
 #include "angles.hpp"
 #include "Mesh.hpp"
@@ -47,6 +53,14 @@ Mesh Sprite::Helper_make_mesh(ObjectShape objShape, vector2<float> scale, Color4
 	{
 		newMesh = MESH::create_triangle(scale, color);
 	}
+	else if (objShape == ObjectShape::QUAD)
+	{
+		vector2<float> point_1 = { -scale.x, -scale.y / 2 };
+		vector2<float> point_2 = { 0, scale.y / 2 };
+		vector2<float> point_3 = { scale.x, scale.y / 2 };
+		vector2<float> point_4 = { 0, -scale.y / 2 };
+		newMesh = MESH::create_quad(point_1, point_2, point_3, point_4, color);
+	}
 	else
 	{
 		newMesh = MESH::create_line({ 0,0 }, { 1,0 }, scale, color);
@@ -71,6 +85,52 @@ Sprite::Sprite(Object* obj, ObjectShape objShape, vector2<float> position, vecto
 	m_owner->Set_Center({ position.x , position.y });
 
 	Graphic::GetGraphic()->get_need_update_sprite() = true;
+}
+
+Sprite::Sprite(Object* obj, ObjectManager* obj_mang, ObjectShape objShape, bool is_hierarchy, const char* staticSpritePath, vector2<float> position, vector2<float> scale, Color4ub color)
+{
+	m_owner = obj;
+
+	const auto path = staticSpritePath;
+	material.shader = &(SHADER::textured());
+	if (!Can_Load_To_Texture(texture, path))
+	{
+
+	}
+	texture.SelectTextureForSlot(texture);
+	material.textureUniforms["texture_to_sample"] = { &(texture) };
+	material.color4fUniforms["color"] = { 1.0f };
+
+	Mesh newMesh = Helper_make_mesh(objShape, scale, color);
+	shape.InitializeWithMeshAndLayout(newMesh, SHADER::textured_vertex_layout());
+
+	m_owner->SetMesh(newMesh);
+	m_owner->Get_Object_Points() = m_owner->GetMesh().Get_Points();
+	m_owner->SetTranslation(position);
+	m_owner->Set_Center({ position.x , position.y });
+
+	float zoom = Graphic::GetGraphic()->GetView().GetCameraView().GetZoom();
+	matrix3<float> mat_ndc = Graphic::GetGraphic()->GetView().GetCameraView().GetCameraToNDCTransform();
+	mat_ndc *= Graphic::GetGraphic()->GetView().GetCamera().WorldToCamera();
+	mat_ndc *= m_owner->GetTransform().GetModelToWorld();
+
+	material.matrix3Uniforms["to_ndc"] = mat_ndc * MATRIX3::build_scale(2.0f / Get_Width() * zoom, 2.0f / Get_Height() * zoom);
+
+	if (is_hierarchy)
+	{
+		Object* health_bar = new Object(false);
+
+		health_bar->GetMesh().Get_Is_Moved() = true;
+
+		vector2<float> hp_position = { m_owner->GetTransform().GetTranslation().x, m_owner->GetTransform().GetTranslation().y + 120 };
+
+		health_bar->Set_Tag("arena");
+		health_bar->AddComponent(new Sprite(health_bar, ObjectShape::RECT, hp_position, { 150,30 }, { 0,255,0,255 }));
+
+		m_owner->Get_Child().push_back(health_bar);
+		obj_mang->AddObject(health_bar);
+	}
+
 }
 
 Sprite::Sprite(Object* obj, ObjectShape objShape, const char* staticSpritePath, vector2<float> position, vector2<float> scale, Color4ub color)
@@ -180,7 +240,7 @@ void Sprite::Update(float dt)
 		material.floatUniforms["time"] = 1;
 		Graphic::GetGraphic()->Draw(shape, material);
 	}
-	if (!is_animated && m_owner->GetMesh().Get_Is_Moved() || Graphic::GetGraphic()->get_need_update_sprite() || m_owner->Get_Tag() == "arena" || m_owner->Get_Tag() == "pipe1" || m_owner->Get_Tag() == "pipe2")
+	if (!is_animated && m_owner->GetMesh().Get_Is_Moved() || Graphic::GetGraphic()->get_need_update_sprite() || m_owner->Get_Tag() == "arena" || m_owner->Get_Tag() == "pipe1" || m_owner->Get_Tag() == "pipe2" || m_owner->Get_Tag() == "pipe3")
 	{
 		matrix3<float> mat_ndc = Graphic::GetGraphic()->GetView().GetCameraView().GetCameraToNDCTransform();
 		mat_ndc *= Graphic::GetGraphic()->GetView().GetCamera().WorldToCamera();
@@ -190,5 +250,23 @@ void Sprite::Update(float dt)
 		material.matrix3Uniforms["to_ndc"] = mat_ndc;
 
 		Graphic::GetGraphic()->Draw(shape, material);
+		if (!m_owner->Get_Child().empty())
+		{
+			int size = static_cast<int>(m_owner->Get_Child().size());
+			for (int i = 0; i < size; i++)
+			{
+
+				if (m_owner->Get_Child()[i]->GetComponentByTemplate<Sprite>() != nullptr)
+				{
+					Object* obj = m_owner->Get_Child()[i];
+					obj->GetTransform().GetTranslation_Reference() = m_owner->GetTransform().GetTranslation();
+
+					matrix3<float> transform_mat = mat_ndc * MATRIX3::build_translation(0.0f, 120.0f);
+					obj->GetComponentByTemplate<Sprite>()->Get_Material().matrix3Uniforms["to_ndc"] = transform_mat;
+					Graphic::GetGraphic()->Draw(obj->GetComponentByTemplate<Sprite>()->Get_Shape(),
+						obj->GetComponentByTemplate<Sprite>()->Get_Material());
+				}
+			}
+		}
 	}
 }

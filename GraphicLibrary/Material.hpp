@@ -1,3 +1,9 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 #pragma once
 #include "Color4f.hpp"
 #include "matrix3.hpp"

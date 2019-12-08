@@ -1,3 +1,9 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 template <typename T>
 constexpr matrix3<T>::matrix3() noexcept
 {

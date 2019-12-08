@@ -1,3 +1,9 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 #pragma once
 #include "Transform.hpp"
 #include "Mesh.hpp"
@@ -14,7 +20,7 @@ private:
 	Mesh m_mesh;
 
 	std::vector<Component*>components_;
-	std::vector<Object*> belongs_object;
+	std::vector<Object*> child_obj;
 	bool is_dead{};
 	std::string m_name;
 	vector2<float> center_pos;
@@ -73,9 +79,9 @@ public:
 		return m_frame;
 	}
 
-	std::vector<Object*>& Get_Belongs_Objects()
+	std::vector<Object*>& Get_Child()
 	{
-		return belongs_object;
+		return child_obj;
 	}
 
 	std::string Get_Tag()
@@ -179,8 +185,8 @@ public:
 	std::string GetName();
 	bool Get_Need_To_Update();
 
-	Object* Get_Belong_Object_By_Name(std::string name);
-	Object* Get_Belong_Object_By_Tag(std::string tag);
+	Object* Get_Child_Object_By_Name(std::string name);
+	Object* Get_Child_Object_By_Tag(std::string tag);
 
 };
 

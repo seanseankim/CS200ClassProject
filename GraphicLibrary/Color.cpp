@@ -1,3 +1,9 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 #include "Color4f.hpp"
 #include "Color4ub.hpp"
 

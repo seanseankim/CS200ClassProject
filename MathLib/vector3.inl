@@ -1,3 +1,9 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 template <typename T>
 vector3<T>::vector3() noexcept
 {

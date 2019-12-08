@@ -1,3 +1,9 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 #include "View.hpp"
 #include "Graphic.hpp"
 #include "Application.hpp"

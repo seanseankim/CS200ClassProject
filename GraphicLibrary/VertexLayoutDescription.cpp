@@ -1,3 +1,9 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 #include "Mesh.hpp"
 #include "VertexLayoutDescription.hpp"
 #include "Vertices.hpp"

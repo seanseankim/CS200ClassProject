@@ -1,3 +1,9 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 #include "Component_Collision.hpp"
 #include "ObjectManager.hpp"
 #include "StateManager.hpp"
@@ -48,6 +54,7 @@ void Collision::Update(float dt)
 									StateManager::GetStateManager()->Get_current_state().Get_is_next() = true;
 									StateManager::GetStateManager()->Get_current_state().Get_next_level() = "Demo1";
 									Start::Get_Start()->Clear();
+									return;
 										
 								}
 								if (obj_i->Get_Tag() == "pipe2" || obj_j->Get_Tag() == "pipe2")
@@ -58,6 +65,7 @@ void Collision::Update(float dt)
 									StateManager::GetStateManager()->Get_current_state().Get_is_next() = true;
 									StateManager::GetStateManager()->Get_current_state().Get_next_level() = "Demo2";
 									Demo1::Get_Demo1()->Clear();
+									return;
 								}
 								if (obj_i->Get_Tag() == "pipe3" || obj_j->Get_Tag() == "pipe3")
 								{
@@ -67,6 +75,7 @@ void Collision::Update(float dt)
 									StateManager::GetStateManager()->Get_current_state().Get_is_next() = true;
 									StateManager::GetStateManager()->Get_current_state().Get_next_level() = "Start";
 									Demo2::Get_Demo2()->Clear();
+									return;
 								}
 							}
 						}

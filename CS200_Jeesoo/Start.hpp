@@ -1,3 +1,9 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 #pragma once
 #include "State.hpp"
 #include "Object.hpp"
@@ -37,5 +43,6 @@ private:
 	Object* mountain{};
 	Object* ground{};
 	Object* sun{};
+	Object* quad{};
 
 };

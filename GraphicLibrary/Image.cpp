@@ -1,3 +1,9 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 #include "Image.hpp"
 #include <cassert>
 #include <filesystem>
@@ -19,7 +25,7 @@ void Image::ResizeToPixelWidthHeight(const int pixel_width, const int pixel_heig
 	assert(pixel_height > 0 && pixel_width > 0);
 	width = pixel_width;
 	height = pixel_height;
-	pixels.resize(width * height);
+	pixels.resize(static_cast<size_t>(width) * static_cast<size_t>(height));
 }
 
 bool Image::LoadFromPNG(const std::filesystem::path& file_path) noexcept
@@ -60,7 +66,7 @@ void Image::SetPixel(const int column, const int row, const Color4ub color) noex
 	assert(row >= 0 && row <= height);
 	assert(column >= 0 && row <= width);
 
-	pixels[(row * width) + column] = color;
+	pixels[(static_cast<unsigned long long>(row) * static_cast<unsigned long long>(width)) + static_cast<unsigned long long>(column)] = color;
 }
 
 Color4ub* Image::GetPixelsPointer() noexcept
@@ -86,7 +92,7 @@ void Image::FlipVertically() noexcept
 	{
 		for (int j = 0; j < width; j++)
 		{
-			temp_save.push_back(pixels[(i * width) + j]);
+			temp_save.push_back(pixels[(static_cast<unsigned long long>(i) * static_cast<unsigned long long>(width)) + static_cast<unsigned long long>(j)]);
 		}
 	}
 	pixels = temp_save;

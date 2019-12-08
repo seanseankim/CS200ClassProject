@@ -1,6 +1,14 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
+
 #pragma once
 #include "State.hpp"
 #include "Object.hpp"
+#include "Component_Text.hpp"
 #include <string>
 #include <iostream>
 
@@ -31,7 +39,10 @@ private:
 	Object* animatedObject_2{};
 	Object* animatedObject_3{};
 	Object* ground{};
+	Object* ground_1{};
 	Object* top_ground{};
 	Object* turtle{};
 	Object* pipe{};
+
+	BitmapFont font{};
 };

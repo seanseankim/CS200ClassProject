@@ -1,3 +1,9 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 #include <algorithm>
 #include "Object.hpp"
 
@@ -53,11 +59,11 @@ bool Object::Get_Need_To_Update()
 	return need_to_update;
 }
 
-Object* Object::Get_Belong_Object_By_Name(std::string name)
+Object* Object::Get_Child_Object_By_Name(std::string name)
 {
-	if (!belongs_object.empty())
+	if (!child_obj.empty())
 	{
-		for (Object* obj : belongs_object)
+		for (Object* obj : child_obj)
 		{
 			if (obj->GetName() == name)
 			{
@@ -68,11 +74,11 @@ Object* Object::Get_Belong_Object_By_Name(std::string name)
 	return nullptr;
 }
 
-Object* Object::Get_Belong_Object_By_Tag(std::string n_tag)
+Object* Object::Get_Child_Object_By_Tag(std::string n_tag)
 {
-	if (!belongs_object.empty())
+	if (!child_obj.empty())
 	{
-		for (Object* obj : belongs_object)
+		for (Object* obj : child_obj)
 		{
 			if (obj->Get_Tag() == n_tag)
 			{

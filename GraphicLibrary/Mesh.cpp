@@ -1,4 +1,9 @@
-
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 #include "Mesh.hpp"
 #include "angles.hpp"
 #include <cmath>
@@ -156,6 +161,21 @@ namespace MESH
 		traingle.SetPointListType(PointListPattern::Triangles);
 
 		return traingle;
+	}
+	Mesh create_quad(vector2<float> point_1, vector2<float> point_2, vector2<float> point_3, vector2<float> point_4, Color4ub color)
+	{
+		Mesh quad;
+
+		quad.AddPoint({ point_1.x, point_1.y });
+		quad.AddPoint({ point_2.x, point_2.y });
+		quad.AddPoint({ point_3.x, point_3.y });
+		quad.AddPoint({ point_4.x, point_4.y });
+
+		quad.AddColor(color);
+
+		quad.SetPointListType(PointListPattern::TriangleFan);
+
+		return quad;
 	}
 }
 

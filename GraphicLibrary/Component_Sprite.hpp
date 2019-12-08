@@ -1,5 +1,12 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 #pragma once
 #include "Component.hpp"
+#include "ObjectManager.hpp"
 #include "Shader.hpp"
 #include "Vertices.hpp"
 #include "Material.hpp"
@@ -13,6 +20,7 @@ class Sprite : public Component
 {
 public:
 	Sprite(Object* obj, ObjectShape objShape, vector2<float> position, vector2<float> scale, Color4ub color = {255,255,255,255});
+	Sprite(Object* obj, ObjectManager* obj_mang, ObjectShape objShape, bool is_hierarchy, const char* staticSpritePath, vector2<float> position, vector2<float> scale, Color4ub color = { 255,255,255,255 });
 	Sprite(Object* obj, ObjectShape objShape, const char* staticSpritePath, vector2<float> position, vector2<float> scale, Color4ub color = { 255,255,255,255 });
 	Sprite(Object* obj, const char* aniamtedSpritePath, bool animated, int frames, float m_speed, vector2<float> position, vector2<float> scale, Color4ub color = { 255,255,255,255 });
 	void Init(Object* obj) override;

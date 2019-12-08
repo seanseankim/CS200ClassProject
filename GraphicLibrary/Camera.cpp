@@ -1,3 +1,9 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 #include "Camera.hpp"
 
 matrix3<float> Helper_build_world_to_camera(vector2<float> center_vec, vector2<float> up_vec, vector2<float> right_vec)

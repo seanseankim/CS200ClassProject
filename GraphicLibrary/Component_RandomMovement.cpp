@@ -1,3 +1,9 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 #include "Component_RandomMovement.hpp"
 #include <time.h>
 void RandomMovement::Init(Object* obj)

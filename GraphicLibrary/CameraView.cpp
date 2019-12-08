@@ -1,35 +1,10 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 #include "CameraView.hpp"
-
-// For RightHanded_OriginCenter
-// You want to map (-w/2, w/2) to (-1,1) and (-h/2,h/2) to (-1,1)
-//           (w/2,h/2)                (1,1)
-//      +--------+             +--------+
-//      |        |             |        |
-//      | cam    |     --->    | ndc    |
-//      +--------+             +--------+
-// (-w/2,-h/2)              (-1,-1)
-//
-
-// For RightHanded_OriginBottomLeft
-// You want to map (0, w) to (-1,1) and (0,h) to (-1,1)
-//             (w,h)                  (1,1)
-//      +--------+             +--------+
-//      |        |             |        |
-//      | cam    |     --->    | ndc    |
-//      +--------+             +--------+
-//    (0,0)                 (-1,-1)
-//
-
-// For LeftHanded_OriginTopLeft
-// You want to map (0, w) to (-1,1) and (0,h) to (1,-1)
-//    (0,0)                 (-1,1)
-//      +--------+             +--------+
-//      |        |             |        |
-//      | cam    |     --->    | ndc    |
-//      +--------+             +--------+
-//             (w,h)                  (1,-1)
-//
-
 
 void helper_set_ndc(matrix3<float>& camtoNDC, CameraView::FrameOfReference frame_reference, vector2<float> display_size, float zoom = 1)
 {

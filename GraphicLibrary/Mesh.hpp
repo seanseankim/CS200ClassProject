@@ -1,3 +1,9 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 #pragma once
 #include "Color4ub.hpp"
 #include "vector2.hpp"
@@ -60,4 +66,5 @@ namespace MESH
 	Mesh create_wire_box(float dimension = 1, Color4ub color = Color4ub{ 255 }) noexcept;
 	Mesh create_line(vector2<float> a = { 0, 0 }, vector2<float> b = { 1, 0 }, vector2<float> scale = { 1,1 }, Color4ub color = Color4ub{ 255 }) noexcept;
 	Mesh create_triangle(vector2<float> scale = { 1,1 }, Color4ub color = Color4ub{ 255 }) noexcept;
+	Mesh create_quad(vector2<float> point_1, vector2<float> point_2, vector2<float> point_3, vector2<float> point_4, Color4ub color = Color4ub{ 255 });
 }

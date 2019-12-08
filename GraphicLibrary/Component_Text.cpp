@@ -1,3 +1,9 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 #include <GL/glew.h>
 #include <iostream>
 #include "Component_Text.hpp"

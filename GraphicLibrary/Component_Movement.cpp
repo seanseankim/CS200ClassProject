@@ -1,3 +1,9 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 #include "Component_Movement.hpp"
 #include "Screenshot.hpp"
 #include "Application.hpp"
@@ -12,15 +18,15 @@ void Movement::Update(float dt)
 	dt;
 	if (input.Is_Key_Pressed(GLFW_KEY_W))
 	{
-		m_owner->GetTransform().AddTranslation({ 0.0f, 1.0f });
+		m_owner->GetTransform().AddTranslation({ 0.0f, 2.0f });
 
 		if (input.Is_Key_Pressed((GLFW_KEY_D)))
 		{
-			m_owner->GetTransform().AddTranslation({ 1.0f, 0.0f });
+			m_owner->GetTransform().AddTranslation({ 2.0f, 0.0f });
 		}
 		else if (input.Is_Key_Pressed((GLFW_KEY_A)))
 		{
-			m_owner->GetTransform().AddTranslation({ -1.0f, 0.0f });
+			m_owner->GetTransform().AddTranslation({ -2.0f, 0.0f });
 		}
 
 		m_owner->GetMesh().Get_Is_Moved() = true;
@@ -28,14 +34,14 @@ void Movement::Update(float dt)
 	}
 	else if (input.Is_Key_Pressed(GLFW_KEY_S))
 	{
-		m_owner->GetTransform().AddTranslation({ 0.0f, -1.0f });
+		m_owner->GetTransform().AddTranslation({ 0.0f, -2.0f });
 		if (input.Is_Key_Pressed((GLFW_KEY_D)))
 		{
-			m_owner->GetTransform().AddTranslation({ 1.0f, 0.0f });
+			m_owner->GetTransform().AddTranslation({ 2.0f, 0.0f });
 		}
 		else if (input.Is_Key_Pressed((GLFW_KEY_A)))
 		{
-			m_owner->GetTransform().AddTranslation({ -1.0f, 0.0f });
+			m_owner->GetTransform().AddTranslation({ -2.0f, 0.0f });
 		}
 		m_owner->GetMesh().Get_Is_Moved() = true;
 		m_owner->Set_Need_Update_Points(true);
@@ -43,14 +49,14 @@ void Movement::Update(float dt)
 	}
 	else if (input.Is_Key_Pressed((GLFW_KEY_A)))
 	{
-		m_owner->GetTransform().AddTranslation({ -1.0f, 0.0f });
+		m_owner->GetTransform().AddTranslation({ -2.0f, 0.0f });
 		
 		m_owner->GetMesh().Get_Is_Moved() = true;
 		m_owner->Set_Need_Update_Points(true);
 	}
 	else if (input.Is_Key_Pressed((GLFW_KEY_D)))
 	{
-		m_owner->GetTransform().AddTranslation({ 1.0f, 0.0f });
+		m_owner->GetTransform().AddTranslation({ 2.0f, 0.0f });
 		
 		m_owner->GetMesh().Get_Is_Moved() = true;
 		m_owner->Set_Need_Update_Points(true);

@@ -1,3 +1,9 @@
+/*
+*Jeesoo Kim
+*Class Project
+*CS200
+*Fall 2019
+*/
 #include <iostream>
 #include "Mesh.hpp"
 #include "StockShaders.hpp"
